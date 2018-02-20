@@ -86,10 +86,10 @@ public class Juego {
                 System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
             } else if (jugada.toUpperCase().charAt(0) < 'A' || jugada.toUpperCase().charAt(0) > 'H' || jugada.toUpperCase().charAt(2) < 'A' || jugada.toUpperCase().charAt(2) > 'H') {
                 System.out.println("Jugada incorrecta. Ha introducido una letra inválida o en posición errónea.");
-            } else if ((int)jugada.charAt(1) < 1   //OJO aqui he cambiado los '1' 
-                    || (int)jugada.charAt(1) > 8
-                    || (int)jugada.charAt(3) < 1
-                    || (int)jugada.charAt(3) > 8) {
+            } else if (jugada.charAt(1) < '1'   //OJO aqui habiae cambiado los '1' y no iba bien ni casteando a (int) 
+                    || jugada.charAt(1) > '8'
+                    || jugada.charAt(3) < '1'
+                    || jugada.charAt(3) > '8') {
                 System.out.println("Jugada incorrecta. Ha introducido un número inválido o en posición incorrecta.");
             } else {
                 movi.setPosInicial(new Posicion(jugada.toUpperCase().charAt(1) - 49,jugada.toUpperCase().charAt(0) -65));

@@ -21,8 +21,7 @@ public class Ajedrez2 {
         Tablero tab = new Tablero();
         j1.comenzarJuego(tab);
         Scanner lector = new Scanner(System.in);
-        System.out.println(j1.meterJugada(tab).toString());
-
+        tab.hacerMovimiento(j1.meterJugada(tab),tab);
         
         
         

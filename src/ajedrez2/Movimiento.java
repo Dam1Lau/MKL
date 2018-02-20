@@ -18,25 +18,7 @@ public class Movimiento {
 
     //construct
     public Movimiento() {
-        /*boolean noValido = true;
-        Scanner lector = new Scanner(System.in);
-        while (noValido == true) {
-            System.out.println("Introduzca su movimiento:");
-            String jugadaUsuario = lector.next();
-            if(jugadaUsuario.length()!=4)
-                System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
-            else if(jugadaUsuario.toUpperCase().charAt(0)<'A' || jugadaUsuario.toUpperCase().charAt(0)> 'H' || jugadaUsuario.toUpperCase().charAt(2)<'A' || jugadaUsuario.toUpperCase().charAt(2)>'H')
-                System.out.println("Jugada incorrecta. Ha introducido una letra inválida o en posición errónea.");
-            else if(jugadaUsuario.charAt(1)<'1' || jugadaUsuario.charAt(1)>'8' || jugadaUsuario.charAt(3)<'1' || jugadaUsuario.charAt(3)>'8')
-                System.out.println("Jugada incorrecta. Ha introducido un número inválido o en posición incorrecta.");
-            else{
-                Posicion ini = new Posicion(jugadaUsuario.toUpperCase().charAt(0)- 65,jugadaUsuario.toUpperCase().charAt(1) - 49);
-                posInicial = ini;
-                Posicion fin = new Posicion(jugadaUsuario.toUpperCase().charAt(2) - 65,jugadaUsuario.toUpperCase().charAt(3) - 49);
-                posFinal = fin;
-                noValido = false;
-            }
-        }*/
+
     }
 
     public Movimiento(Posicion posInicial, Posicion posFinal) {
@@ -101,22 +83,6 @@ public class Movimiento {
         return numero;
     }
     
-    public boolean comprobarMovimiento(String jugada){
-        boolean noValido = true;
-        if (jugada.length() != 4) {
-                System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
-            } else if (jugada.toUpperCase().charAt(0) < 'A' || jugada.toUpperCase().charAt(0) > 'H' || jugada.toUpperCase().charAt(2) < 'A' || jugada.toUpperCase().charAt(2) > 'H') {
-                System.out.println("Jugada incorrecta. Ha introducido una letra inválida o en posición errónea.");
-            } else if ((int)jugada.charAt(1) < 1
-                    || (int)jugada.charAt(1) > 8
-                    || (int)jugada.charAt(3) < 1
-                    || (int)jugada.charAt(3) > 8) {
-                System.out.println("Jugada incorrecta. Ha introducido un número inválido o en posición incorrecta.");
-            } else {
-                noValido = false;
-            }
-        return noValido;
-    }
 
     @Override
     public String toString() {
