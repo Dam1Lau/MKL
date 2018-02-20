@@ -14,8 +14,7 @@ import java.util.Scanner;
 public class Juego {
 
     /**
-     * Turno tomará dos valores: 0 si es el turno de las piezas blancas
-     * 1 si lo
+     * Turno tomará dos valores: 0 si es el turno de las piezas blancas 1 si lo
      * es el de las piezas negras
      */
     private int turno;
@@ -38,10 +37,11 @@ public class Juego {
     }
 
     // Métodos 
-    public void comenzarJuego() {
+    public void comenzarJuego(Tablero tablero) {
         System.out.println("***¡Comienza el juego!***");
-        Tablero tab = new Tablero();
-        pintaMe(tab);
+//        Tablero tab = new Tablero();
+        pintaMe(tablero);
+        System.out.println(this.toString());
     }
 
     public void pintaMe(Tablero tablero) {
@@ -67,7 +67,7 @@ public class Juego {
      * Preguntará al usuario el movimiento que quiere hacer (su jugada) y eso
      * hará que se genere un movimiento.
      *
-     * @param jugada El usuario solo puede introducir una juegada de esta forma
+     * @param jugada El usuario solo puede introducir una jugada de esta forma
      * "A1B1" donde las letras son las columnas del movimiento, y los números
      * las filas del movimiento generado. Si la jugada genera un movimiento no
      * válido, le debe preguntar de nuevo por el movimiento que desea
@@ -75,11 +75,13 @@ public class Juego {
      * @param tablero
      * @return
      */
-    public Movimiento meterJugada(String jugada, Tablero tablero) {  //ESTE ES IGUAL QUE EL PRIMERO QUE HICE EN EL CONSTRUCTOR DE MOVIMIENTO D:
+    public Movimiento meterJugada(Tablero tablero) {  //ESTE ES IGUAL QUE EL PRIMERO QUE HICE EN EL CONSTRUCTOR DE MOVIMIENTO D:
         boolean noValido = true;
         Movimiento movi = null;
         Scanner lector = new Scanner(System.in);
         while (noValido == true) {
+            System.out.println("Introduce la jugada:");
+            String jugada = lector.next();
             if (jugada.length() != 4) {
                 System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
             } else if (jugada.toUpperCase().charAt(0) < 'A' || jugada.toUpperCase().charAt(0) > 'H' || jugada.toUpperCase().charAt(2) < 'A' || jugada.toUpperCase().charAt(2) > 'H') {

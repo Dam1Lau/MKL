@@ -49,7 +49,7 @@ public abstract class  Piezas {
      * y de si tiene otras piezas a su alrededor. Método abstracto que cambiará en cada clase que herede de pieza.
      * @return true = si se puede mover, false = si tiene otras piezas bloqueando su movimiento.
      */
-    public abstract boolean puedeMoverse();
+    public abstract boolean puedeMoverse(Movimiento movimiento);
     public abstract String pintarPieza();
 
     @Override

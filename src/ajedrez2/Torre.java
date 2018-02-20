@@ -11,7 +11,7 @@ package ajedrez2;
  */
 public class Torre extends Piezas {
     //constructores
-    
+
     public Torre() {
         nombre = "Torre";
         color = "Blanca";
@@ -21,26 +21,26 @@ public class Torre extends Piezas {
         super(color);
         nombre = "Torre";
     }
-    
+
     //Métodos
-    
     @Override
-    public boolean puedeMoverse(){
-        boolean movimiento=false;
-    
-        
-        return movimiento;
-    }
-    
-    @Override
-    public String pintarPieza(){
-        String pieza;
-        if (this.color.compareToIgnoreCase("blanca")==0)
-        pieza = "\u2656";
-        else
-            pieza = "\u265C";
-        return pieza;
+    public boolean puedeMoverse(Movimiento movimiento) {
+        boolean mov = false;
+        if (movimiento.esHorizontal() == true || movimiento.esVertical() == true) {
+            mov = true;
+        }
+        return mov;
     }
 
+    @Override
+    public String pintarPieza() {
+        String pieza;
+        if (this.color.compareToIgnoreCase("blanca") == 0) {
+            pieza = "\u2656";
+        } else {
+            pieza = "\u265C";
+        }
+        return pieza;
+    }
 
 }

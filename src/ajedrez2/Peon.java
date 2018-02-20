@@ -24,10 +24,10 @@ public class Peon extends Piezas {
 
     //Métodos
     @Override
-    public boolean puedeMoverse() {
-        boolean movimiento = false;
+    public boolean puedeMoverse(Movimiento movimiento) {
+        boolean movi = false;
 
-        return movimiento;
+        return movi;
     }
 
     @Override
