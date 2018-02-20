@@ -92,11 +92,13 @@ public class Movimiento {
     }
 
     public int numHorizontal() {
-        return 9;
+        int numero = Math.abs(posFinal.getColumna() - posInicial.getColumna()); 
+        return numero;
     }
 
     public int numVertical() {
-        return 9;
+        int numero = Math.abs(posFinal.getFila() - posInicial.getFila()); 
+        return numero;
     }
 
     @Override

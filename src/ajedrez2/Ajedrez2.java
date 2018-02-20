@@ -24,7 +24,7 @@ public class Ajedrez2 {
         System.out.println(p4.hayPieza(5, 5));
         p4.ponerPieza(new Caballo(), 5, 5);
 
-        Posicion posicionTest = new Posicion(2, 1);
+        Posicion posicionTest = new Posicion(2, 1);  //fila, columna
         Posicion posicionDos = new Posicion(0, 0);
         Posicion posicionReina = new Posicion(4, 4);
         p4.ponerPieza(new Dama("negra"), posicionReina); //Probando a meter fichas random
@@ -51,7 +51,7 @@ public class Ajedrez2 {
 //        System.out.println(f1);
 //        System.out.println(c2);
 //        System.out.println(f2);
-        Movimiento vamoaver = new Movimiento(posicionDos,posicionTest);
+        Movimiento vamoaver = new Movimiento(posicionDos,posicionTest);  //Inicial - Final
         System.out.println(vamoaver.esDiagonal());
     }
     
