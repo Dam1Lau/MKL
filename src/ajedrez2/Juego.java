@@ -77,7 +77,7 @@ public class Juego {
      */
     public Movimiento meterJugada(Tablero tablero) {  //ESTE ES IGUAL QUE EL PRIMERO QUE HICE EN EL CONSTRUCTOR DE MOVIMIENTO D:
         boolean noValido = true;
-        Movimiento movi = null;
+        Movimiento movi = new Movimiento();
         Scanner lector = new Scanner(System.in);
         while (noValido == true) {
             System.out.println("Introduce la jugada:");
@@ -86,13 +86,14 @@ public class Juego {
                 System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
             } else if (jugada.toUpperCase().charAt(0) < 'A' || jugada.toUpperCase().charAt(0) > 'H' || jugada.toUpperCase().charAt(2) < 'A' || jugada.toUpperCase().charAt(2) > 'H') {
                 System.out.println("Jugada incorrecta. Ha introducido una letra inválida o en posición errónea.");
-            } else if (jugada.charAt(1) < '1' || jugada.charAt(1) > '8' || jugada.charAt(3) < '1' || jugada.charAt(3) > '8') {
+            } else if ((int)jugada.charAt(1) < 1   //OJO aqui he cambiado los '1' 
+                    || (int)jugada.charAt(1) > 8
+                    || (int)jugada.charAt(3) < 1
+                    || (int)jugada.charAt(3) > 8) {
                 System.out.println("Jugada incorrecta. Ha introducido un número inválido o en posición incorrecta.");
             } else {
-                Posicion ini = new Posicion(jugada.toUpperCase().charAt(0) - 65, jugada.toUpperCase().charAt(1) - 49);
-                movi.setPosInicial(ini);
-                Posicion fin = new Posicion(jugada.toUpperCase().charAt(2) - 65, jugada.toUpperCase().charAt(3) - 49);
-                movi.setPosFinal(fin);
+                movi.setPosInicial(new Posicion(jugada.toUpperCase().charAt(1) - 49,jugada.toUpperCase().charAt(0) -65));
+                movi.setPosFinal(new Posicion(jugada.toUpperCase().charAt(3) - 49, jugada.toUpperCase().charAt(2) - 65));
                 noValido = false;
             }
         }
