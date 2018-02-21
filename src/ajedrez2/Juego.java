@@ -67,15 +67,17 @@ public class Juego {
      * Preguntará al usuario el movimiento que quiere hacer (su jugada) y eso
      * hará que se genere un movimiento.
      *
-     * @param jugada El usuario solo puede introducir una jugada de esta forma
+     * El usuario solo puede introducir una jugada de esta forma
      * "A1B1" donde las letras son las columnas del movimiento, y los números
      * las filas del movimiento generado. Si la jugada genera un movimiento no
      * válido, le debe preguntar de nuevo por el movimiento que desea
-     * introducir.
+     * introducir. Además, debemos hacer todas las comprobaciones necesarias para estar seguros de que el movimiento es
+     * correcto antes de generar el movimiento en el ultimo paso.
      * @param tablero
-     * @return
+     * @return movimiento válido tras las comprobaciones 
      */
-    public Movimiento meterJugada(Tablero tablero) {  //ESTE ES IGUAL QUE EL PRIMERO QUE HICE EN EL CONSTRUCTOR DE MOVIMIENTO D:
+    
+    public Movimiento meterJugada(Tablero tablero) {  
         boolean noValido = true;
         Movimiento movi = new Movimiento();
         Scanner lector = new Scanner(System.in);
@@ -86,12 +88,14 @@ public class Juego {
                 System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
             } else if (jugada.toUpperCase().charAt(0) < 'A' || jugada.toUpperCase().charAt(0) > 'H' || jugada.toUpperCase().charAt(2) < 'A' || jugada.toUpperCase().charAt(2) > 'H') {
                 System.out.println("Jugada incorrecta. Ha introducido una letra inválida o en posición errónea.");
-            } else if (jugada.charAt(1) < '1'   //OJO aqui habiae cambiado los '1' y no iba bien ni casteando a (int) 
+            } else if ((int)jugada.charAt(1) < 49   
                     || jugada.charAt(1) > '8'
                     || jugada.charAt(3) < '1'
                     || jugada.charAt(3) > '8') {
                 System.out.println("Jugada incorrecta. Ha introducido un número inválido o en posición incorrecta.");
-            } else {
+            } else if(tablero.hayPieza(jugada.charAt(1),jugada.charAt(0)) == true){
+            
+            }else {//Validar si hay pieza en pos incial color turno, si hay pieza pos final y el color es el mismo turno
                 movi.setPosInicial(new Posicion(jugada.toUpperCase().charAt(1) - 49,jugada.toUpperCase().charAt(0) -65));
                 movi.setPosFinal(new Posicion(jugada.toUpperCase().charAt(3) - 49, jugada.toUpperCase().charAt(2) - 65));
                 noValido = false;
