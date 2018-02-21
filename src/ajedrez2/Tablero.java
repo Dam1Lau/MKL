@@ -101,28 +101,18 @@ public class Tablero {
     public Piezas buscarPieza(int fila, int columna) {
         return casillas[fila][columna];
     }
-
     public Piezas buscarPieza(Posicion posicion) {
         return casillas[posicion.getFila()][posicion.getColumna()];
     }
 
-    public void hacerMovimiento(Movimiento movimiento, Tablero tablero, Juego juego) {
+    public void hacerMovimiento(Movimiento movimiento, Tablero tablero) {
         //si es valido, esto aun no esta hecho - AÑADIR! Cosas necesarias para que pueda moverle:
         // Que el tipo de movimiento sea válido para esa pieza.
-        // Que sea mi turno.
-        //Que si es mi turno y hay una pieza del otro color pueda comerla. Y si es de mi color no.
-        if (tablero.hayPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()) == true
-                && tablero.buscarPieza(movimiento.getPosInicial().getFila(),movimiento.getPosInicial().getColumna()).getColor() == juego.getTurno()
-                
-                
-                {
-
+        //Las otras comprobaciones las hacemos cuando introduce el movimiento mejor
             Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
             quitarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna());
             ponerPieza(aux, movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna());
-        }else{
-            System.out.println("No hay pieza en esa casilla.");
-        }
+        
     }
 
 }

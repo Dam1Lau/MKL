@@ -83,21 +83,23 @@ public class Juego {
         Scanner lector = new Scanner(System.in);
         while (noValido == true) {
             System.out.println("Introduce la jugada:");
-            String jugada = lector.next();
+            String jugada = lector.nextLine().toUpperCase();
             if (jugada.length() != 4) {
                 System.out.println("Jugada inválida, introduce una jugada de cuatro caracteres en éste orden: A1C2");
-            } else if (jugada.toUpperCase().charAt(0) < 'A' || jugada.toUpperCase().charAt(0) > 'H' || jugada.toUpperCase().charAt(2) < 'A' || jugada.toUpperCase().charAt(2) > 'H') {
+            } else if (jugada.charAt(0) < 'A' || jugada.charAt(0) > 'H' || jugada.charAt(2) < 'A' || jugada.charAt(2) > 'H') {
                 System.out.println("Jugada incorrecta. Ha introducido una letra inválida o en posición errónea.");
             } else if ((int)jugada.charAt(1) < 49   
                     || jugada.charAt(1) > '8'
                     || jugada.charAt(3) < '1'
                     || jugada.charAt(3) > '8') {
                 System.out.println("Jugada incorrecta. Ha introducido un número inválido o en posición incorrecta.");
-            } else if(tablero.hayPieza(jugada.charAt(1),jugada.charAt(0)) == true){
-            
+            } else if(tablero.hayPieza((int)jugada.charAt(1)-49,(int)jugada.charAt(0)-65) == false){
+                System.out.println("No hay pieza en esa casilla.");
+            }else if(tablero.buscarPieza((int)jugada.charAt(1)-49,(int)jugada.charAt(0)-65).getColor().charAt(0) != this.toString().charAt(0)){  //Aqui da fallo del tamaño del array si pongo 48 vale para la fila 0 pero no para la 8
+                System.out.println("Esa pieza no es de tu color.");
             }else {//Validar si hay pieza en pos incial color turno, si hay pieza pos final y el color es el mismo turno
-                movi.setPosInicial(new Posicion(jugada.toUpperCase().charAt(1) - 49,jugada.toUpperCase().charAt(0) -65));
-                movi.setPosFinal(new Posicion(jugada.toUpperCase().charAt(3) - 49, jugada.toUpperCase().charAt(2) - 65));
+                movi.setPosInicial(new Posicion(jugada.charAt(1) - 49,jugada.charAt(0) -65));
+                movi.setPosFinal(new Posicion(jugada.charAt(3) - 49, jugada.charAt(2) - 65));
                 noValido = false;
             }
         }
@@ -108,10 +110,10 @@ public class Juego {
     public String toString() {
         String color;
         if (turno == 0) {
-            color = " BLANCAS";
+            color = "blancas";
         } else {
-            color = " NEGRAS";
+            color = "negras";
         }
-        return "Es el turno de" + color;
+        return color;
     }
 }

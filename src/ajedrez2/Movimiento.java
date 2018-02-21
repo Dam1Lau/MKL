@@ -67,19 +67,23 @@ public class Movimiento {
      */
     public boolean esDiagonal() {
         boolean diagonal = false;
-        if (Math.abs(posFinal.getFila() - posInicial.getFila()) == Math.abs(posFinal.getColumna() - posInicial.getColumna()) && posInicial != posFinal) {
+        if (Math.abs(numVertical()) == Math.abs(numHorizontal()) /*&& posInicial != posFinal*/) {
             diagonal = true;
         }
         return diagonal;
     }
-
+    /**
+     * numHorizontal hace el cálculo de cuantas casillas se ha movido la pieza, horizontalmente, para ayudarnos en cada pieza a comprobar
+     * si el movimiento es válido o no. 
+     * @return int - número de casillas en horizontal que se desplaza la pieza en cda movimiento.
+     */
     public int numHorizontal() {
-        int numero = Math.abs(posFinal.getColumna() - posInicial.getColumna()); 
+        int numero = posFinal.getColumna() - posInicial.getColumna(); 
         return numero;
     }
 
     public int numVertical() {
-        int numero = Math.abs(posFinal.getFila() - posInicial.getFila()); 
+        int numero =posFinal.getFila() - posInicial.getFila(); 
         return numero;
     }
     
