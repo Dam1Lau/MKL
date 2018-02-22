@@ -19,7 +19,7 @@ public class Ajedrez2 {
     public static void main(String[] args) {
         Juego j1 = new Juego();
         Tablero tab = new Tablero();
-        tab.ponerPieza(new Dama("blanca"),4,4);
+        tab.ponerPieza(new Rey("blanca"),5,4);
         j1.comenzarJuego(tab);
         Scanner lector = new Scanner(System.in);
         tab.hacerMovimiento(j1.meterJugada(tab),tab);

@@ -14,7 +14,7 @@ public class Rey extends Piezas {
     
     public Rey() {
         nombre = "Rey";
-        color = "Blanco";
+        color = "blanco";
     }
 
     public Rey(String color) {
@@ -26,9 +26,9 @@ public class Rey extends Piezas {
     
     @Override
     public boolean puedeMoverse(Movimiento movimiento){
-        boolean movi=false;
-    
-        
+        boolean movi = false;
+        if(Math.abs(movimiento.numHorizontal())  == 1 || Math.abs(movimiento.numVertical()) == 1)
+            movi = true;
         return movi;
     }
     

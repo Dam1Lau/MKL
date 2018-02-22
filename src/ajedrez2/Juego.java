@@ -98,7 +98,7 @@ public class Juego {
                 System.out.println("Esa pieza no es de tu color. No es tu turno.");
 
             } else if (tablero.hayPieza(jugada.charAt(3) - 49, jugada.charAt(2) - 65) == true 
-                    && tablero.buscarPieza((int) jugada.charAt(1) - 49, (int) jugada.charAt(0) - 65).getColor().charAt(0) == this.toString().charAt(0)){
+                    && tablero.buscarPieza((int) jugada.charAt(3) - 49, (int) jugada.charAt(2) - 65).getColor().charAt(0) == this.toString().charAt(0)){
                 System.out.println("Hay una pieza de tu color en esa posición.");
             } else {//Validar si hay pieza en pos incial color turno, si hay pieza pos final y el color es el mismo turno
                 movi.setPosInicial(new Posicion(jugada.charAt(1) - 49, jugada.charAt(0) - 65));

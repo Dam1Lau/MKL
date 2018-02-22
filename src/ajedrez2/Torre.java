@@ -14,7 +14,7 @@ public class Torre extends Piezas {
 
     public Torre() {
         nombre = "Torre";
-        color = "Blanca";
+        color = "blanca";
     }
 
     public Torre(String color) {
