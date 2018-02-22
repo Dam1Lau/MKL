@@ -14,7 +14,7 @@ public class Peon extends Piezas {
 
     public Peon() {
         nombre = "Peon";
-        color = "Blanco";
+        color = "blanco";
     }
 
     public Peon(String color) {
@@ -23,10 +23,23 @@ public class Peon extends Piezas {
     }
 
     //Métodos
+    
+    /**
+     * En el caso del peón el movimiento es válido en estas situaciones:
+     *      Si son blancos: Cuando el movimiento vertical es +1 (+2 si nunca se ha movido) y no hay piezas contrarias en sus diagonal.
+     *      Si son negros:  Cuando el movimiento vertical es -1 (-2 si nucna se ha movido) y si no hay piezas contrarias en sus diagonales.   
+     *      En ambos casos si hay pieza contraria en sus diagonales, tambien pueden moverse en diagonal.
+     * @param movimiento - movimiento introducido por el usuario tras comprobarlo.
+     * @return boolean = true si el movimiento se puede realizar.
+     */
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;
-
+        if (this.color.charAt(0)== 'b' && movimiento.esVertical() == true && movimiento.numVertical() == -1) {
+            movi = true;
+        } else if (movimiento.esVertical() == true && movimiento.numVertical() == 1) {
+            movi=true;
+        }
         return movi;
     }
 
