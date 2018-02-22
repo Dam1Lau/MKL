@@ -101,18 +101,24 @@ public class Tablero {
     public Piezas buscarPieza(int fila, int columna) {
         return casillas[fila][columna];
     }
+
     public Piezas buscarPieza(Posicion posicion) {
         return casillas[posicion.getFila()][posicion.getColumna()];
     }
-
+    /**
+     * El movimiento se realizará 
+     * @param movimiento
+     * @param tablero 
+     */
     public void hacerMovimiento(Movimiento movimiento, Tablero tablero) {
         //si es valido, esto aun no esta hecho - AÑADIR! Cosas necesarias para que pueda moverle:
         // Que el tipo de movimiento sea válido para esa pieza.
         //Las otras comprobaciones las hacemos cuando introduce el movimiento mejor
+        if ((tablero.buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento)) == true) {
             Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
             quitarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna());
             ponerPieza(aux, movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna());
-        
+        }
     }
 
 }

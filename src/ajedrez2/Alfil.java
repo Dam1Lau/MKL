@@ -26,7 +26,8 @@ public class Alfil extends Piezas {
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;
-
+        if(movimiento.esDiagonal() == true)
+            movi = true;
         return movi;
     }
 

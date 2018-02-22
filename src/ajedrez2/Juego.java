@@ -45,11 +45,10 @@ public class Juego {
     }
 
     public void pintaMe(Tablero tablero) {
-        int num = 1;
         System.out.println("   a  b  c d  e f  g  h  ");
         System.out.println("   _____________________");
-        for (int i = 0; i < tablero.casillas.length; i++, num++) {
-            System.out.print(num + " |");
+        for (int i = 0; i < tablero.casillas.length; i++) {
+            System.out.print(i+1 + " |");
             for (int j = 0; j < tablero.casillas.length; j++) {
                 if (tablero.casillas[i][j] != null) {
                     System.out.print(tablero.casillas[i][j].pintarPieza() + " ");
