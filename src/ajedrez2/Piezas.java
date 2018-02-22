@@ -16,6 +16,8 @@ public abstract class  Piezas {
     //Constructores
 
     public Piezas() {
+        color = "blanca";
+        nombre = "test";
     }
     /**
      * Constructor para generar una pieza cualquiera.

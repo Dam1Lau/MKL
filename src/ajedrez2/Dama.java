@@ -26,7 +26,8 @@ public class Dama extends Piezas {
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;
-
+        if(movimiento.esDiagonal() || movimiento.esHorizontal() || movimiento.esVertical())
+            movi = true;
         return movi;
     }
 

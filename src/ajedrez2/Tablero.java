@@ -118,6 +118,10 @@ public class Tablero {
             Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
             quitarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna());
             ponerPieza(aux, movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna());
+            
+            
+        }else{
+            System.out.println("La pieza no puede moverse de ese modo.");
         }
     }
 

@@ -39,9 +39,8 @@ public class Juego {
     // Métodos 
     public void comenzarJuego(Tablero tablero) {
         System.out.println("***¡Comienza el juego!***");
-//        Tablero tab = new Tablero();
         pintaMe(tablero);
-        System.out.println(this.toString());
+        System.out.println("* Es el turno de " + this.toString() + " *");
     }
 
     public void pintaMe(Tablero tablero) {
