@@ -27,8 +27,13 @@ public class Caballo extends Piezas {
     @Override
     public boolean puedeMoverse(Movimiento movimiento){
         boolean movi=false;
-    
-        
+        if(movimiento.esHorizontal() !=true 
+                && movimiento.esVertical() != true 
+                && movimiento.esDiagonal()!= true 
+                && Math.abs(movimiento.numHorizontal()) <3
+                && Math.abs(movimiento.numVertical()) <3){
+            movi = true;
+        }
         return movi;
     }
     

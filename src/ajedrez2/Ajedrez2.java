@@ -19,11 +19,18 @@ public class Ajedrez2 {
     public static void main(String[] args) {
         Juego j1 = new Juego();
         Tablero tab = new Tablero();
-        tab.ponerPieza(new Rey("blanca"),5,4);
+        //tab.ponerPieza(new Caballo("blanca"), 5, 4);
         j1.comenzarJuego(tab);
         Scanner lector = new Scanner(System.in);
-        tab.hacerMovimiento(j1.meterJugada(tab),tab);
-        j1.pintaMe(tab);
+        for (int i = 0; i < 10; i++) {
+            tab.hacerMovimiento(j1.meterJugada(tab), tab);
+            j1.pintaMe(tab);
+            j1.setTurno(i+1);
+            System.out.println("Turno de " + j1.toString());
+
+        }
+//        tab.hacerMovimiento(j1.meterJugada(tab),tab);
+//        j1.pintaMe(tab);
     }
 
 }

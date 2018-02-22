@@ -121,6 +121,7 @@ public class Tablero {
             
         }else{
             System.out.println("La pieza no puede moverse de ese modo.");
+            
         }
     }
 
