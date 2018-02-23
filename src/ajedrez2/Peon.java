@@ -35,9 +35,9 @@ public class Peon extends Piezas {
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;
-        if (this.color.charAt(0)== 'b' && movimiento.esVertical() == true && movimiento.numVertical() == -1) {
+        if (color.charAt(0)== 'b' && movimiento.esVertical() == true && movimiento.numVertical() == 1) {
             movi = true;
-        } else if (movimiento.esVertical() == true && movimiento.numVertical() == 1) {
+        } else if (color.charAt(0)== 'n' && movimiento.esVertical() == true && movimiento.numVertical() == -1) {
             movi=true;
         }
         return movi;

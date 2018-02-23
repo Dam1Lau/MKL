@@ -110,19 +110,21 @@ public class Tablero {
      * @param movimiento
      * @param tablero 
      */
-    public void hacerMovimiento(Movimiento movimiento, Tablero tablero) {
+    public boolean hacerMovimiento(Movimiento movimiento, Tablero tablero) {
         //si es valido, esto aun no esta hecho - AÑADIR! Cosas necesarias para que pueda moverle:
         // Que el tipo de movimiento sea válido para esa pieza.
         //Las otras comprobaciones las hacemos cuando introduce el movimiento mejor
+        boolean realizado=false;
         if ((tablero.buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento)) == true) {
             Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
             quitarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna());
             ponerPieza(aux, movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna());
-            
+            realizado = true;
         }else{
             System.out.println("La pieza no puede moverse de ese modo.");
             
         }
+        return realizado;
     }
 
 }
