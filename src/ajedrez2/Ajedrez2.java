@@ -23,14 +23,23 @@ public class Ajedrez2 {
         j1.comenzarJuego(tab);
         Scanner lector = new Scanner(System.in);
         for (int i = 0; i < 10; i++) {
-            tab.hacerMovimiento(j1.meterJugada(tab), tab);
+            tab.hacerMovimiento(j1.meterJugada(tab));
             j1.pintaMe(tab);
             j1.setTurno(i+1);
             System.out.println("Turno de " + j1.toString());
-
+            
         }
 //        tab.hacerMovimiento(j1.meterJugada(tab),tab);
 //        j1.pintaMe(tab);
     }
 
 }
+
+/*NOTAS A HACER:
+- Peones: Movimiento comer en diagonal y poder avanzar 2 casillas en el primer turno
+- Piezas entre para el movimiento diagonal
+- Comprobar el caballo
+- Añadir puntuación a cada pieza
+
+
+*/

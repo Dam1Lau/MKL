@@ -73,6 +73,16 @@ public class Tablero {
         return hay;
     }
 
+    /**
+     * Poner Pieza: La pieza introducida mediante el parámetro pieza se coloca
+     * en el tablero en la posición que indican la fila y la columna. En el
+     * array bidimensional que es el tablero podemos elegir la posición exacta
+     * gracias a las filas y columnas.
+     *
+     * @param pieza Pieza que deseamos posicionar en la casilla del tablero.
+     * @param fila Fila en la que colocamos la pieza en el array.
+     * @param columna Columna en la que colocamos la pieza en el array.
+     */
     public void ponerPieza(Piezas pieza, int fila, int columna) {
         casillas[fila][columna] = pieza;
     }
@@ -81,11 +91,20 @@ public class Tablero {
         casillas[posicion.getFila()][posicion.getColumna()] = pieza;
     }
 
+    /**
+     * Quitar Pieza: Elimina del array tablero la información que esté contenida
+     * en la posicion definida mediante fila y columna. Si hay una referencia a
+     * una pieza, cambia el valor a null.
+     *
+     * @param fila Fila del array que nos ayuda a determinar la posición a
+     * borrar.
+     * @param columna Columna del array para poder saber la posición a borrar.
+     */
     public void quitarPieza(int fila, int columna) {
         casillas[fila][columna] = null;
     }
 
-    public void quitarPieza(int fila, Posicion posicion) {
+    public void quitarPieza(Posicion posicion) {
         casillas[posicion.getFila()][posicion.getColumna()] = null;
     }
 
@@ -96,7 +115,7 @@ public class Tablero {
      * @param fila - En la que queremos buscar la pieza - de 0 a 7.
      * @param columna - En la que quieremos buscar la pieza - de 0 a 7 para
      * nosotros.
-     * @return
+     * @return Pieza encontrada en esa posición.
      */
     public Piezas buscarPieza(int fila, int columna) {
         return casillas[fila][columna];
@@ -105,26 +124,76 @@ public class Tablero {
     public Piezas buscarPieza(Posicion posicion) {
         return casillas[posicion.getFila()][posicion.getColumna()];
     }
+
     /**
-     * El movimiento se realizará 
+     * El movimiento se realizará
+     *
      * @param movimiento
-     * @param tablero 
+     * @return
      */
-    public boolean hacerMovimiento(Movimiento movimiento, Tablero tablero) {
+    public boolean hacerMovimiento(Movimiento movimiento) {
         //si es valido, esto aun no esta hecho - AÑADIR! Cosas necesarias para que pueda moverle:
         // Que el tipo de movimiento sea válido para esa pieza.
         //Las otras comprobaciones las hacemos cuando introduce el movimiento mejor
-        boolean realizado=false;
-        if ((tablero.buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento)) == true) {
+        boolean realizado = false;
+        if ((buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento)) == true
+                && hayPiezasEntre(movimiento) == false) {
             Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
             quitarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna());
             ponerPieza(aux, movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna());
             realizado = true;
-        }else{
+        } else {
             System.out.println("La pieza no puede moverse de ese modo.");
-            
+
         }
         return realizado;
+    }
+
+    public boolean hayPiezasEntre(Movimiento movimiento) {
+        boolean hay = false;
+        if (movimiento.esHorizontal() == true && movimiento.numHorizontal() > 0) {
+            for (int i = movimiento.getPosInicial().getColumna() + 1; i < movimiento.getPosFinal().getColumna(); i++) {
+                if (hayPieza(movimiento.getPosInicial().getFila(), i) == true) {
+                    hay = true;
+                }
+            }
+        } else if (movimiento.esHorizontal() == true && movimiento.numHorizontal() < 0) {
+            for (int i = movimiento.getPosFinal().getColumna() + 1; i < movimiento.getPosInicial().getColumna(); i++) {
+                if (hayPieza(movimiento.getPosInicial().getFila(), i) == true) {
+                    hay = true;
+                }
+            }
+        } else if (movimiento.esVertical() == true && movimiento.numVertical() > 0) {
+            for (int i = movimiento.getPosInicial().getFila() + 1; i < movimiento.getPosFinal().getFila(); i++) {
+                if (hayPieza(i, movimiento.getPosInicial().getColumna()) == true) {
+                    hay = true;
+                }
+            }
+        } else if (movimiento.esVertical() == true && movimiento.numVertical() < 0) {
+            for (int i = movimiento.getPosFinal().getFila() + 1; i < movimiento.getPosInicial().getFila(); i++) {
+                if (hayPieza(i, movimiento.getPosInicial().getColumna()) == true) {
+                    hay = true;
+                }
+            }
+            
+            //DESDE AQUI DIAGONALES REVISAR
+        } else if (movimiento.esDiagonal() == true) {
+            if (movimiento.numVertical() < 0 && movimiento.numHorizontal() > 0) { //Diagonal hacia ariba derecha: Filas bajan, columnas suben
+                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() + 1; i < movimiento.getPosInicial().getFila(); i--, j++) {
+                    if (hayPieza(i, j) == true) {
+                        hay = true;
+                    }
+                }
+            }else if (movimiento.numVertical() < 0 && movimiento.numHorizontal() < 0){ //Diagonal arriba izquierda: Filas bajan, columnas bajan.
+                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i < movimiento.getPosInicial().getFila() && j< movimiento.getPosInicial().getColumna() ; i--, j--) {
+                    if (hayPieza(i, j) == true) {
+                        hay = true;
+                    }
+                }
+            
+            }
+        }
+        return hay;
     }
 
 }

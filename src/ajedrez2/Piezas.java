@@ -54,6 +54,7 @@ public abstract class  Piezas {
     public abstract boolean puedeMoverse(Movimiento movimiento);
     public abstract String pintarPieza();
 
+    
     @Override
     public String toString() {
         return "Pieza{" + this.getClass().getSimpleName() + " " + color + '}';
