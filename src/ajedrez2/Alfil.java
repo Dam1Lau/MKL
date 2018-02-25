@@ -15,11 +15,13 @@ public class Alfil extends Piezas {
     public Alfil() {
         nombre = "Alfil";
         color = "Blanca";
+        puntos = 4;
     }
 
     public Alfil(String color) {
         super(color);
         nombre = "Alfil";
+        puntos = 4;
     }
 
     //Métodos

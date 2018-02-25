@@ -47,7 +47,7 @@ public class Juego {
         System.out.println("   a  b  c d  e f  g  h  ");
         System.out.println("   _____________________");
         for (int i = 0; i < tablero.casillas.length; i++) {
-            System.out.print(i+1 + " |");
+            System.out.print(i + 1 + " |");
             for (int j = 0; j < tablero.casillas.length; j++) {
                 if (tablero.casillas[i][j] != null) {
                     System.out.print(tablero.casillas[i][j].pintarPieza() + " ");
@@ -97,22 +97,42 @@ public class Juego {
             } else if (tablero.buscarPieza((int) jugada.charAt(1) - 49, (int) jugada.charAt(0) - 65).getColor().charAt(0) != this.toString().charAt(0)) {
                 System.out.println("Esa pieza no es de tu color. No es tu turno.");
 
-            } else if (tablero.hayPieza(jugada.charAt(3) - 49, jugada.charAt(2) - 65) == true 
-                    && tablero.buscarPieza((int) jugada.charAt(3) - 49, (int) jugada.charAt(2) - 65).getColor().charAt(0) == this.toString().charAt(0)){
+            } else if (tablero.hayPieza(jugada.charAt(3) - 49, jugada.charAt(2) - 65) == true
+                    && tablero.buscarPieza((int) jugada.charAt(3) - 49, (int) jugada.charAt(2) - 65).getColor().charAt(0) == this.toString().charAt(0)) {
                 System.out.println("Hay una pieza de tu color en esa posición.");
             } else {
                 movi.setPosInicial(new Posicion(jugada.charAt(1) - 49, jugada.charAt(0) - 65));
                 movi.setPosFinal(new Posicion(jugada.charAt(3) - 49, jugada.charAt(2) - 65));
-                noValido = false;
+                if (tablero.hayPiezasEntre(movi) == true) {
+                    System.out.println("Hay pieza entre la tuya y la posición introducida.");
+                } else {
+                    noValido = false;
+                }
             }
         }
         return movi;
+    }
+    
+    public void recuentoFinal(Tablero tablero){
+    int blancas=0, negras=0;
+        for (int i = 0; i < tablero.casillas.length; i++) {
+            for (int j = 0; j < tablero.casillas.length; j++) {
+                if(tablero.buscarPieza(i, j) != null && tablero.buscarPieza(i, j).getColor().charAt(0) == 'b'){
+                    blancas = blancas + tablero.buscarPieza(i, j).getPuntos();
+                }else if(tablero.buscarPieza(i, j) != null){
+                    negras = negras + tablero.buscarPieza(i, j).getPuntos(); 
+                }
+            }
+        }
+        System.out.println("Puntuación blancas: " + blancas);
+        System.out.println("Puntuación negras: " + negras);
+    
     }
 
     @Override
     public String toString() {
         String color;
-        if (turno%2 == 0) {
+        if (turno % 2 == 0) {
             color = "blancas";
         } else {
             color = "negras";

@@ -15,11 +15,13 @@ public class Caballo extends Piezas {
     public Caballo() {
         nombre = "Caballo";
         color = "Blanco";
+        puntos = 3;
     }
 
     public Caballo(String color) {
         super(color);
         nombre = "Caballo";
+        puntos = 3;
     }
     
     //Métodos

@@ -12,6 +12,7 @@ package ajedrez2;
 public abstract class  Piezas {
     protected String color;
     protected String nombre;
+    protected int puntos;
     
     //Constructores
 
@@ -44,6 +45,12 @@ public abstract class  Piezas {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    
     
     // Métodos
     /**

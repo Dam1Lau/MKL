@@ -15,11 +15,13 @@ public class Peon extends Piezas {
     public Peon() {
         nombre = "Peon";
         color = "blanco";
+        puntos = 1;
     }
 
     public Peon(String color) {
         super(color);
         nombre = "Peon";
+        puntos = 1;
     }
 
     //Métodos
@@ -40,8 +42,10 @@ public class Peon extends Piezas {
         } else if (color.charAt(0)== 'n' && movimiento.esVertical() == true && movimiento.numVertical() == -1) {
             movi=true;
         }
+        
         return movi;
     }
+    
 
     @Override
     public String pintarPieza() {
