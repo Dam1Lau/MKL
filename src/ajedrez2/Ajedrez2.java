@@ -19,10 +19,10 @@ public class Ajedrez2 {
     public static void main(String[] args) {
         Juego j1 = new Juego();
         Tablero tab = new Tablero();
-        tab.ponerPieza(new Alfil("blanca"), 5, 4);
+        //tab.ponerPieza(new Alfil("blanca"), 5, 4);
         j1.comenzarJuego(tab);
         Scanner lector = new Scanner(System.in);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             tab.hacerMovimiento(j1.meterJugada(tab));
             j1.pintaMe(tab);
             j1.setTurno(i+1);
@@ -40,9 +40,7 @@ public class Ajedrez2 {
 
 /*NOTAS A HACER:
 - Peones: Movimiento comer en diagonal y poder avanzar 2 casillas en el primer turno
-- Piezas entre para el movimiento diagonal (funciona solo en el primero diagonal arriba derecha)
 - Comprobar el caballo
 - Añadir puntuación a cada pieza
-
 
 */
