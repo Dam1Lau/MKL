@@ -22,7 +22,7 @@ public class Ajedrez2 {
         //tab.ponerPieza(new Alfil("blanca"), 5, 4);
         j1.comenzarJuego(tab);
         Scanner lector = new Scanner(System.in);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             tab.hacerMovimiento(j1.meterJugada(tab));
             j1.pintaMe(tab);
             j1.setTurno(i+1);

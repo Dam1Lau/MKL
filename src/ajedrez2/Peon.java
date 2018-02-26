@@ -11,13 +11,23 @@ package ajedrez2;
  */
 public class Peon extends Piezas {
     //constructores
-
+/**
+ * Constructor por defecto para un Peón. Los atributos se inicializan del siguiente modo:
+ * Nombre: Peon
+ * Color: Blanco
+ * Puntos: 1
+ */
     public Peon() {
         nombre = "Peon";
         color = "blanco";
         puntos = 1;
     }
-
+/**
+ * Constructor para crear una nueva Pieza de tipo Peon.
+ * El atributo que podemos especificar es el color, que se instroduce como primer parámetro.
+ * El resto de atributos del Peón son la puntuación y el nombre, que ya están inicializados con un valor.
+ * @param color Color de la pieza = "blanco" si es blanca, "negro" si pertenece a las piezas negras.
+ */
     public Peon(String color) {
         super(color);
         nombre = "Peon";
@@ -45,8 +55,7 @@ public class Peon extends Piezas {
         
         return movi;
     }
-    
-
+ 
     @Override
     public String pintarPieza() {
         String pieza;

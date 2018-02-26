@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ajedrez2;
 
 /**
@@ -20,6 +15,7 @@ public abstract class  Piezas {
         color = "blanca";
         nombre = "test";
     }
+    
     /**
      * Constructor para generar una pieza cualquiera.
      * @param color - Para ideantificar si la pieza es blanca o negra
@@ -49,8 +45,6 @@ public abstract class  Piezas {
     public int getPuntos() {
         return puntos;
     }
-
-    
     
     // Métodos
     /**
@@ -61,6 +55,7 @@ public abstract class  Piezas {
      * @return true = si se puede mover, false = si tiene otras piezas bloqueando su movimiento.
      */
     public abstract boolean puedeMoverse(Movimiento movimiento);
+    
     /**
      * Pintar pieza: Cada pieza devuelve un 
      * @return 
