@@ -32,7 +32,10 @@ public class Dama extends Piezas {
             movi = true;
         return movi;
     }
-
+ /**
+  * Dibuja la pieza usando el cñodigo unicode asignado a cada pieza de ajedrez segun su color.
+  * @return Símbolo unicode de la pieza.
+  */
     @Override
     public String pintarPieza() {
         String pieza;

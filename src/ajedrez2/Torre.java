@@ -34,6 +34,12 @@ public class Torre extends Piezas {
         return mov;
     }
 
+    /**
+     * Dibuja la pieza usando el cñodigo unicode asignado a cada pieza de
+     * ajedrez segun su color.
+     *
+     * @return Símbolo unicode de la pieza.
+     */
     @Override
     public String pintarPieza() {
         String pieza;
@@ -44,6 +50,5 @@ public class Torre extends Piezas {
         }
         return pieza;
     }
-    
 
 }

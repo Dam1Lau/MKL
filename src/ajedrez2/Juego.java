@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ajedrez2;
 
 import java.util.Scanner;
 
-/**
- *
- * @author dam1
- */
 public class Juego {
 
     /**
@@ -27,22 +18,58 @@ public class Juego {
         this.turno = 0;
     }
 
-    //Get y Set del Turno
+    /**
+     * Get turno: Nos devuelve el turno en el que nos encontramos.
+     *
+     * @return Número entero indicando el turno.
+     */
     public int getTurno() {
         return turno;
     }
 
+    /**
+     * Set turno: Nos permite cambiar el turno en el que nos encontramos.
+     *
+     * @param turno - número entero para cambiar el turno anterior por el nuevo
+     * introducido.
+     */
     public void setTurno(int turno) {
         this.turno = turno;
     }
 
-    // Métodos 
+    /**
+     * Comenzar juego: Encargado de realizar las acciones necesarias para poder
+     * jugar. Indica el turno, pinta el tablero si el movimiento se realiza, y
+     * al finalizar el juego muestra puntuación final.
+     *
+     * @param tablero - tablero en el que estamos jugando.
+     */
     public void comenzarJuego(Tablero tablero) {
         System.out.println("***¡Comienza el juego!***");
         pintaMe(tablero);
         System.out.println("* Es el turno de " + this.toString() + " *");
+        Scanner lector = new Scanner(System.in);
+        for (int i = 0; i < 50; i++) {
+            //tablero.hacerMovimiento(this.meterJugada(tablero));
+            if (tablero.hacerMovimiento(this.meterJugada(tablero)) == true) {
+                this.pintaMe(tablero);
+                this.setTurno(i + 1);
+                System.out.println("Turno de " + this.toString());
+            } else {
+                System.out.println("Turno de: " + this.toString());
+            }
+        }
+        System.out.println("FIN DEL JUEGO");
+        this.recuentoFinal(tablero);
     }
 
+    /**
+     * Pintame: Dibuja el tablero en el que jugamos. Llama al método pintarPieza
+     * e introduce en los lugares vacios del array un espacio en blanco.
+     *
+     * @param tablero - tablero en el que jugamos. Necesario para acceder a las
+     * casillas.
+     */
     public void pintaMe(Tablero tablero) {
         System.out.println("   a  b  c d  e f  g  h  ");
         System.out.println("   _____________________");
@@ -112,23 +139,35 @@ public class Juego {
         }
         return movi;
     }
-    
-    public void recuentoFinal(Tablero tablero){
-    int blancas=0, negras=0;
+
+    /**
+     * Cuando el juego ha finalizado, se llama a este método que se encargará de
+     * recorrer el tablero y al ir encontrando piezas, observa cuál es su color
+     * y añade la puntuación de cada pieza al contador de cada color. Finalmente
+     * imprime el resultado en puntos.
+     *
+     * @param tablero
+     */
+    public void recuentoFinal(Tablero tablero) {
+        int blancas = 0, negras = 0;
         for (int i = 0; i < tablero.casillas.length; i++) {
             for (int j = 0; j < tablero.casillas.length; j++) {
-                if(tablero.buscarPieza(i, j) != null && tablero.buscarPieza(i, j).getColor().charAt(0) == 'b'){
+                if (tablero.buscarPieza(i, j) != null && tablero.buscarPieza(i, j).getColor().charAt(0) == 'b') {
                     blancas = blancas + tablero.buscarPieza(i, j).getPuntos();
-                }else if(tablero.buscarPieza(i, j) != null){
-                    negras = negras + tablero.buscarPieza(i, j).getPuntos(); 
+                } else if (tablero.buscarPieza(i, j) != null) {
+                    negras = negras + tablero.buscarPieza(i, j).getPuntos();
                 }
             }
         }
         System.out.println("Puntuación blancas: " + blancas);
         System.out.println("Puntuación negras: " + negras);
-    
-    }
 
+    }
+/**
+ * Devuelve el turno en el que nos encontramos. En caso de que el turno sea par, es el turno de las piezas blancas.
+ * Si el turno es un número impar, es el turno de las piezas negras.
+ * @return 
+ */
     @Override
     public String toString() {
         String color;

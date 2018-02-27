@@ -24,7 +24,12 @@ public class Alfil extends Piezas {
         puntos = 4;
     }
 
-    //Métodos
+/**
+ * Puede Moverse: El alfil podrá moverse siempre y cuando el movimiento introducido por el
+ * jugador sea de tipo diagonal.
+ * @param movimiento - Movimiento introducido por el usuario.
+ * @return boolean True si el movimiento es correcto. False si no puede moverse de ese modo.
+ */
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;
@@ -32,7 +37,11 @@ public class Alfil extends Piezas {
             movi = true;
         return movi;
     }
-
+    
+ /**
+  * Dibuja la pieza usando el cñodigo unicode asignado a cada pieza de ajedrez segun su color.
+  * @return Símbolo unicode de la pieza.
+  */
     @Override
     public String pintarPieza() {
         String pieza;

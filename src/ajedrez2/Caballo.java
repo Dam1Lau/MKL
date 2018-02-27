@@ -13,14 +13,14 @@ public class Caballo extends Piezas {
     //constructores
     
     public Caballo() {
-        nombre = "Caballo";
+        nombre = "caballo";
         color = "Blanco";
         puntos = 3;
     }
 
     public Caballo(String color) {
         super(color);
-        nombre = "Caballo";
+        nombre = "caballo";
         puntos = 3;
     }
     
@@ -38,7 +38,10 @@ public class Caballo extends Piezas {
         }
         return movi;
     }
-    
+     /**
+  * Dibuja la pieza usando el cñodigo unicode asignado a cada pieza de ajedrez segun su color.
+  * @return Símbolo unicode de la pieza.
+  */
     @Override
     public String pintarPieza(){
         String pieza;
