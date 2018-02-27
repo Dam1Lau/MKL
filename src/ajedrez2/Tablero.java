@@ -133,7 +133,11 @@ public class Tablero {
     public Piezas buscarPieza(int fila, int columna) {
         return casillas[fila][columna];
     }
-
+/**
+ * 
+ * @param posicion
+ * @return 
+ */
     public Piezas buscarPieza(Posicion posicion) {
         return casillas[posicion.getFila()][posicion.getColumna()];
     }
@@ -146,7 +150,8 @@ public class Tablero {
      * movimiento no se realiza.
      *
      * @param movimiento
-     * @return realizado = si es true el movimiento se ha realizado correctamente
+     * @return realizado = si es true el movimiento se ha realizado
+     * correctamente
      */
     public boolean hacerMovimiento(Movimiento movimiento) {
 
@@ -163,11 +168,15 @@ public class Tablero {
         }
         return realizado;
     }
-/**
- * 
- * @param movimiento
- * @return 
- */
+
+    /**
+     * Hay Piezas Entre: Método que recorre el tablero entre la posición inicial
+     * de la pieza, y la posición final a la que queremos que se mueva,
+     * comprobando si en esas casillas intermedias existe una pieza.
+     *
+     * @param movimiento - Movimiento introducido por el usuario.
+     * @return True si existe una pieza entre la posición inicial y la final. False si no hay piezas entre ambas posiciones.
+     */
     public boolean hayPiezasEntre(Movimiento movimiento) {
         boolean hay = false;
         if (buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).getNombre().compareToIgnoreCase("caballo") == 0) {
