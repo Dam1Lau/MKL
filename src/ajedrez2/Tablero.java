@@ -151,13 +151,15 @@ public class Tablero {
 
     public boolean hayPiezasEntre(Movimiento movimiento) {
         boolean hay = false;
-        if (movimiento.esHorizontal() == true && movimiento.numHorizontal() > 0) {
-            for (int i = movimiento.getPosInicial().getColumna() + 1; i < movimiento.getPosFinal().getColumna(); i++) {
-                if (hayPieza(movimiento.getPosInicial().getFila(), i) == true) {
-                    hay = true;
-                }
+        if (buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).getNombre().compareToIgnoreCase("caballo") == 0) {
+            hay = false;
+        }else if(movimiento.esHorizontal() == true && movimiento.numHorizontal() > 0) {
+        for (int i = movimiento.getPosInicial().getColumna() + 1; i < movimiento.getPosFinal().getColumna(); i++) {
+            if (hayPieza(movimiento.getPosInicial().getFila(), i) == true) {
+                hay = true;
             }
-        } else if (movimiento.esHorizontal() == true && movimiento.numHorizontal() < 0) {
+        }
+    }else if (movimiento.esHorizontal() == true && movimiento.numHorizontal() < 0) {
             for (int i = movimiento.getPosFinal().getColumna() + 1; i < movimiento.getPosInicial().getColumna(); i++) {
                 if (hayPieza(movimiento.getPosInicial().getFila(), i) == true) {
                     hay = true;
@@ -175,43 +177,65 @@ public class Tablero {
                     hay = true;
                 }
             }
-        } else if (movimiento.esDiagonal() == true && this.hayPiezasDiagonal(movimiento) == true) {
-            hay = true;
-        }
-        return hay;
-    }
-
-    // SOLO FUNCIONA EL MOVIMIENTO DIAGONAL ARRIBA DERECHA 
-    public boolean hayPiezasDiagonal(Movimiento movimiento) {
-        boolean hay = false;
-        if (movimiento.numVertical() < 0 && movimiento.numHorizontal() > 0) { //Diagonal hacia ariba derecha: Filas bajan, columnas suben
+        } else if (movimiento.numVertical() < 0 && movimiento.numHorizontal() > 0) { //Diagonal hacia ariba derecha: Filas bajan, columnas suben
                 for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() + 1; i > movimiento.getPosFinal().getFila() && j < movimiento.getPosFinal().getColumna() && hay == false; i--, j++) {
                     if (hayPieza(i, j) == true) {
                         hay = true;
                     }
                 }
             } else if (movimiento.numVertical() < 0 && movimiento.numHorizontal() < 0) { //Diagonal arriba izquierda: Filas bajan, columnas bajan.
-                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i >= movimiento.getPosInicial().getFila() && j >= movimiento.getPosInicial().getColumna() && hay == false; i--, j--) {
+                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i >= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i--, j--) {
                     if (hayPieza(i, j) == true) {
                         hay = true;
                     }
                 }
 
             } else if (movimiento.numVertical() > 0 && movimiento.numHorizontal() > 0) {  //Diagonal abajo derecha: Filas aumentan, columnas aumentan
-                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() + 1; i <= movimiento.getPosInicial().getFila() && j <= movimiento.getPosInicial().getColumna() && hay == false; i++, j++) {
+                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() + 1; i <= movimiento.getPosFinal().getFila() && j <= movimiento.getPosFinal().getColumna() && hay == false; i++, j++) {
                     if (hayPieza(i, j) == true) {
                         hay = true;
                     }
                 }
             } else if(movimiento.numVertical() > 0 && movimiento.numHorizontal() < 0) { //Diagonal abajo izquierda: Filas aumentan(i), columnas bajan(j)
-                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() - 1; i <= movimiento.getPosInicial().getFila() && j >= movimiento.getPosInicial().getColumna() && hay == false; i++, j--) {
+                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() - 1; i <= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i++, j--) {
                     if (hayPieza(i, j) == true) {
                         hay = true;
                     }
                 }
 
             }
-        return hay;    
+    return hay;
     }
 
+//    public boolean hayPiezasDiagonal(Movimiento movimiento) {
+//        boolean hay = false;
+//        if (movimiento.numVertical() < 0 && movimiento.numHorizontal() > 0) { //Diagonal hacia ariba derecha: Filas bajan, columnas suben
+//                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() + 1; i > movimiento.getPosFinal().getFila() && j < movimiento.getPosFinal().getColumna() && hay == false; i--, j++) {
+//                    if (hayPieza(i, j) == true) {
+//                        hay = true;
+//                    }
+//                }
+//            } else if (movimiento.numVertical() < 0 && movimiento.numHorizontal() < 0) { //Diagonal arriba izquierda: Filas bajan, columnas bajan.
+//                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i >= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i--, j--) {
+//                    if (hayPieza(i, j) == true) {
+//                        hay = true;
+//                    }
+//                }
+//
+//            } else if (movimiento.numVertical() > 0 && movimiento.numHorizontal() > 0) {  //Diagonal abajo derecha: Filas aumentan, columnas aumentan
+//                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() + 1; i <= movimiento.getPosFinal().getFila() && j <= movimiento.getPosFinal().getColumna() && hay == false; i++, j++) {
+//                    if (hayPieza(i, j) == true) {
+//                        hay = true;
+//                    }
+//                }
+//            } else if(movimiento.numVertical() > 0 && movimiento.numHorizontal() < 0) { //Diagonal abajo izquierda: Filas aumentan(i), columnas bajan(j)
+//                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() - 1; i <= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i++, j--) {
+//                    if (hayPieza(i, j) == true) {
+//                        hay = true;
+//                    }
+//                }
+//
+//            }
+//        return hay;    
+//    }
 }
