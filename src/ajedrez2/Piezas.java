@@ -10,7 +10,9 @@ public abstract class  Piezas {
     protected int puntos;
     
     //Constructores
-
+/**
+ * Constructor por defecto para una pieza cualquiera. 
+ */
     public Piezas() {
         color = "blanca";
         nombre = "test";
@@ -25,23 +27,38 @@ public abstract class  Piezas {
     }
     
     //getset
-
+/**
+ * Get color - devuelve el color de la pieza.
+ * @return 
+ */
     public String getColor() {
         return color;
     }
-
+/**
+ * Set color - permite cambiar el color de la pieza.
+ * @param color 
+ */
     public void setColor(String color) {
         this.color = color;
     }
-
+/**
+ * Get color - devuelve el nombre de la pieza.
+ * @return 
+ */
     public String getNombre() {
         return nombre;
     }
-
+/**
+ * Set nombre - permite cambiar el nombre de la pieza.
+ * @param nombre 
+ */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+/**
+ * Get color - devuelve los puntos de la pieza.
+ * @return 
+ */
     public int getPuntos() {
         return puntos;
     }
@@ -57,7 +74,7 @@ public abstract class  Piezas {
     public abstract boolean puedeMoverse(Movimiento movimiento);
     
     /**
-     * Pintar pieza: Cada pieza devuelve un 
+     * Pintar pieza: Cada pieza devolverá un símbolo unicode que representa a su subclase.
      * @return 
      */
     public abstract String pintarPieza();

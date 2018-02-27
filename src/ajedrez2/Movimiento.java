@@ -148,10 +148,12 @@ public class Movimiento {
         int numero = posFinal.getFila() - posInicial.getFila();
         return numero;
     }
-/**
- * To String - Devuelve los valores de los atributos de la clase Movimiento.
- * @return 
- */
+
+    /**
+     * To String - Devuelve los valores de los atributos de la clase Movimiento.
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Movimiento{" + "posInicial=" + posInicial + ", posFinal=" + posFinal + '}';
