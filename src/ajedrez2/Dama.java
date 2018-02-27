@@ -10,21 +10,30 @@ package ajedrez2;
  * @author dam1
  */
 public class Dama extends Piezas {
-    //constructores
-
+/**
+ * Constructor por defecto para Dama. Inicializa su nombre a Dama, color a blanca y puntos a 10.
+ */
     public Dama() {
         nombre = "Reina";
         color = "Blanca";
         puntos = 10;
     }
-
+/**
+ * Constructor para Dama. Como parámetro podemos introducir su color.
+ * @param color - recomendado: blanca para pieza de color blanco, negra para pieza de color negro.
+ */
     public Dama(String color) {
         super(color);
         nombre = "Reina";
         puntos = 10;
     }
 
-    //Métodos
+/**
+ * Puede Moverse: La reina o dama podrá moverse en diagonal, horizontal o vertical tantas casillas
+ * como el usuario introduzca.
+ * @param movimiento - Movimiento introducido por el usuario.
+ * @return boolean True si el movimiento es correcto. False si no puede moverse de ese modo.
+ */
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;

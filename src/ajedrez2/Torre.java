@@ -10,21 +10,29 @@ package ajedrez2;
  * @author dam1
  */
 public class Torre extends Piezas {
-    //constructores
-
+ /**
+ * Constructor por defecto para Torre. Inicializa su nombre a Torre, color a blanca y puntos a 5.
+ */
     public Torre() {
         nombre = "Torre";
         color = "blanca";
         puntos = 5;
     }
-
+/**
+ * Constructor para Torre. Como parámetro podemos introducir su color.
+ * @param color - recomendado: blanca para pieza de color blanco, negra para pieza de color negro.
+ */
     public Torre(String color) {
         super(color);
         nombre = "Torre";
         puntos = 5;
     }
-
-    //Métodos
+/**
+ * Puede Moverse: La torre podrá moverse siempre y cuando el movimiento introducido por el
+ * jugador sea de tipo horizontal.
+ * @param movimiento - Movimiento introducido por el usuario.
+ * @return boolean True si el movimiento es correcto. False si no puede moverse de ese modo.
+ */
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean mov = false;

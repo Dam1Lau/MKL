@@ -29,12 +29,11 @@ public class Peon extends Piezas {
         puntos = 1;
     }
 
-    //Métodos
     /**
      * En el caso del peón el movimiento es válido en estas situaciones: Si son
      * blancos: Cuando el movimiento vertical es +1 (+2 si nunca se ha movido) y
      * no hay piezas contrarias en sus diagonal. Si son negros: Cuando el
-     * movimiento vertical es -1 (-2 si nucna se ha movido) y si no hay piezas
+     * movimiento vertical es -1 (-2 si nucna se ha movido anteriormente) y si no hay piezas
      * contrarias en sus diagonales. En ambos casos si hay pieza contraria en
      * sus diagonales, tambien pueden moverse en diagonal.
      *
@@ -46,20 +45,21 @@ public class Peon extends Piezas {
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;
         if (color.charAt(0) == 'b' && movimiento.esVertical() == true) {
-            if (movimiento.getPosInicial().getFila() == 1 && movimiento.numVertical() <= 2) {
+            if (movimiento.getPosInicial().getFila() == 1 && movimiento.numVertical() <= 2 && movimiento.numVertical() > 0) {
                 movi = true;
             } else if (movimiento.numVertical() == 1) {
                 movi = true;
             } else {
-                System.out.println("Peon no puede moverse así.");
+                System.out.println("Peon no puede retroceder.");
             }
         } else if (color.charAt(0) == 'n' && movimiento.esVertical() == true) {
-            if (movimiento.getPosInicial().getFila() == 6 && Math.abs(movimiento.numVertical()) <= 2) {
+            if (movimiento.getPosInicial().getFila() == 6 && movimiento.numVertical() >= -2 && movimiento.numVertical() < 0) {
                 movi = true;
-            } else if (Math.abs(movimiento.numVertical()) == 1) {
+            } else if (movimiento.numVertical() == -1) {
                 movi = true;
             } else {
-                System.out.println("Peon no puede moverse así.");
+                movi = false;
+                System.out.println("Peon no puede retroceder.");
             }
         }
         return movi;

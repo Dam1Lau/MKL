@@ -50,13 +50,13 @@ public class Juego {
         System.out.println("* Es el turno de " + this.toString() + " *");
         Scanner lector = new Scanner(System.in);
         for (int i = 0; i < 50; i++) {
-            //tablero.hacerMovimiento(this.meterJugada(tablero));
-            if (tablero.hacerMovimiento(this.meterJugada(tablero)) == true) {
+            if (tablero.hacerMovimiento(meterJugada(tablero)) != true) {
+                i--;
+                System.out.println("Turno de: " + this.toString());
+            } else {
                 this.pintaMe(tablero);
                 this.setTurno(i + 1);
                 System.out.println("Turno de " + this.toString());
-            } else {
-                System.out.println("Turno de: " + this.toString());
             }
         }
         System.out.println("FIN DEL JUEGO");
@@ -163,11 +163,14 @@ public class Juego {
         System.out.println("Puntuación negras: " + negras);
 
     }
-/**
- * Devuelve el turno en el que nos encontramos. En caso de que el turno sea par, es el turno de las piezas blancas.
- * Si el turno es un número impar, es el turno de las piezas negras.
- * @return 
- */
+
+    /**
+     * Devuelve el turno en el que nos encontramos. En caso de que el turno sea
+     * par, es el turno de las piezas blancas. Si el turno es un número impar,
+     * es el turno de las piezas negras.
+     *
+     * @return String con el color del turno actual. Si es par es turno de blancas, si no, de las piezas negras.
+     */
     @Override
     public String toString() {
         String color;

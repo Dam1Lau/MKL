@@ -16,34 +16,73 @@ public class Movimiento {
     private Posicion posInicial;
     private Posicion posFinal;
 
-    //construct
+    /**
+     * Constructor por defecto para un movimiento.
+     */
     public Movimiento() {
 
     }
 
+    /**
+     * Constructor para crear un nuevo movimiento, introduciendo dos parámetros
+     * de tipo Posicion.
+     *
+     * @param posInicial - de clase Posicion. Es la posición inicial del
+     * movimiento. De donde parte la pieza.
+     * @param posFinal - de clase Posicion. Es la posición final del movimiento.
+     * A dónde muevo la pieza.
+     */
     public Movimiento(Posicion posInicial, Posicion posFinal) {
         this.posInicial = posInicial;
         this.posFinal = posFinal;
     }
 
-    //get set
+    /**
+     * Get posicion inicial. Para conocer el contenido de la posición inicial.
+     *
+     * @return una Posicion, en éste caso la inicial. De donde parte el
+     * movimiento de la pieza.
+     */
     public Posicion getPosInicial() {
         return posInicial;
     }
 
+    /**
+     * Set posicion inicial: Para cambiar el cotenido de la posición inicial.
+     *
+     * @param posInicial
+     */
     public void setPosInicial(Posicion posInicial) {
         this.posInicial = posInicial;
     }
 
+    /**
+     * Get posicion final. Para conocer el contenido de la posición final.
+     *
+     * @return una Posicion, en éste caso la final. Dónde se quiere colocar
+     * finalmente la pieza.
+     */
     public Posicion getPosFinal() {
         return posFinal;
     }
 
+    /**
+     * Set posicion final. Para cambiar el contenido de la posición final.
+     *
+     * @param posFinal
+     */
     public void setPosFinal(Posicion posFinal) {
         this.posFinal = posFinal;
     }
 
-    // metodos
+    /**
+     * Es vertical - Nos indica si el movimiento introducido es vertical
+     * comparando la columna de donde parte el movimiento con la columna a la
+     * que llega (posición inicial y final). Si seguimos en la misma columna, el
+     * movimiento es vertical.
+     *
+     * @return True si efectivamente es vertical. False si no lo es.
+     */
     public boolean esVertical() {
         boolean vertical = false;
         if (posInicial.getColumna() == posFinal.getColumna() && posInicial != posFinal) {
@@ -52,6 +91,14 @@ public class Movimiento {
         return vertical;
     }
 
+    /**
+     * Es horizontal - Nos indica si el movimiento introducido es horizontal
+     * comparando la fila de donde parte el movimiento con la fila a la que
+     * llega (posición inicial y final).Si seguimos en la misma fila, el
+     * movimiento es horizontal.
+     *
+     * @return True si efectivamente es horizontal. False si no lo es.
+     */
     public boolean esHorizontal() {
         boolean horizontal = false;
         if (posInicial.getFila() == posFinal.getFila() && posInicial != posFinal) {
@@ -94,14 +141,17 @@ public class Movimiento {
      * la pieza, verticalmente, para ayudarnos en cada pieza a comprobar si el
      * movimiento es válido o no.
      *
-     * @return int - número de casillas en vertical que se desplaza la pieza
-     * en cada movimiento.
+     * @return int - número de casillas en vertical que se desplaza la pieza en
+     * cada movimiento.
      */
     public int numVertical() {
         int numero = posFinal.getFila() - posInicial.getFila();
         return numero;
     }
-
+/**
+ * To String - Devuelve los valores de los atributos de la clase Movimiento.
+ * @return 
+ */
     @Override
     public String toString() {
         return "Movimiento{" + "posInicial=" + posInicial + ", posFinal=" + posFinal + '}';

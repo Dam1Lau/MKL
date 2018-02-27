@@ -25,7 +25,6 @@ public class Ajedrez2 {
 }
 
 /*NOTAS A HACER:
-- Peones: Movimiento comer en diagonal y poder avanzar 2 casillas en el primer turno
-- Añadir puntuación a cada pieza
-
+- Peones: Movimiento comer en diagonal
+- Peones negros vuelven hacia atras 1 casilla WHYYY
 */

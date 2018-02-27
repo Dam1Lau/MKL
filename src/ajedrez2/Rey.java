@@ -10,19 +10,30 @@ package ajedrez2;
  * @author dam1
  */
 public class Rey extends Piezas {
-    //constructores
-
+/**
+ * Constructor por defecto para Rey. Inicializa su nombre a Rey, color a blanca y puntos a 8.
+ */
     public Rey() {
         nombre = "Rey";
         color = "blanco";
+        puntos = 8;
     }
-
+/**
+ * Constructor para Rey. Como parámetro podemos introducir su color.
+ * @param color - recomendado: blanca para pieza de color blanco, negra para pieza de color negro.
+ */
     public Rey(String color) {
         super(color);
         nombre = "Rey";
+        puntos = 8;
     }
 
-    //Métodos
+/**
+ * Puede Moverse: El ey podrá moverse siempre y cuando el movimiento introducido por el
+ * jugador sea de tipo horizontal, vertical o diagonal, pero solo de una en una casillas.
+ * @param movimiento - Movimiento introducido por el usuario.
+ * @return boolean True si el movimiento es correcto. False si no puede moverse de ese modo.
+ */
     @Override
     public boolean puedeMoverse(Movimiento movimiento) {
         boolean movi = false;

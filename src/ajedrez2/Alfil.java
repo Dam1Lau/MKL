@@ -10,17 +10,22 @@ package ajedrez2;
  * @author dam1
  */
 public class Alfil extends Piezas {
-    //constructores
 
+/**
+ * Constructor por defecto para Alfil. Inicializa su nombre a Alfil, color a blanca y puntos a 4.
+ */
     public Alfil() {
-        nombre = "Alfil";
-        color = "Blanca";
+        nombre = "alfil";
+        color = "blanca";
         puntos = 4;
     }
-
+/**
+ * Constructor para Alfil. Como parámetro podemos introducir su color.
+ * @param color - recomendado: blanca para pieza de color blanco, negra para pieza de color negro.
+ */
     public Alfil(String color) {
         super(color);
-        nombre = "Alfil";
+        nombre = "alfil";
         puntos = 4;
     }
 

@@ -133,11 +133,14 @@ public class Tablero {
     public Piezas buscarPieza(int fila, int columna) {
         return casillas[fila][columna];
     }
-/**
- * 
- * @param posicion
- * @return 
- */
+
+    /**
+     * Ideantifica la pieza que esté en la posición introducida mediante una
+     * posición.
+     *
+     * @param posicion - posición en el tablero donde quiero ver si hay pieza.
+     * @return
+     */
     public Piezas buscarPieza(Posicion posicion) {
         return casillas[posicion.getFila()][posicion.getColumna()];
     }
@@ -155,7 +158,7 @@ public class Tablero {
      */
     public boolean hacerMovimiento(Movimiento movimiento) {
 
-        boolean realizado = false;
+        boolean realizado;
         if ((buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento)) == true
                 && hayPiezasEntre(movimiento) == false) {
             Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
@@ -164,10 +167,11 @@ public class Tablero {
             realizado = true;
         } else {
             System.out.println("La pieza no puede moverse de ese modo.");
-
+            realizado = false;
         }
         return realizado;
     }
+    
 
     /**
      * Hay Piezas Entre: Método que recorre el tablero entre la posición inicial
@@ -175,7 +179,8 @@ public class Tablero {
      * comprobando si en esas casillas intermedias existe una pieza.
      *
      * @param movimiento - Movimiento introducido por el usuario.
-     * @return True si existe una pieza entre la posición inicial y la final. False si no hay piezas entre ambas posiciones.
+     * @return True si existe una pieza entre la posición inicial y la final.
+     * False si no hay piezas entre ambas posiciones.
      */
     public boolean hayPiezasEntre(Movimiento movimiento) {
         boolean hay = false;
@@ -212,20 +217,20 @@ public class Tablero {
                 }
             }
         } else if (movimiento.numVertical() < 0 && movimiento.numHorizontal() < 0) { //Diagonal arriba izquierda: Filas bajan, columnas bajan.
-            for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i >= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i--, j--) {
+            for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i > movimiento.getPosFinal().getFila() && j > movimiento.getPosFinal().getColumna() && hay == false; i--, j--) {
                 if (hayPieza(i, j) == true) {
                     hay = true;
                 }
             }
 
         } else if (movimiento.numVertical() > 0 && movimiento.numHorizontal() > 0) {  //Diagonal abajo derecha: Filas aumentan, columnas aumentan
-            for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() + 1; i <= movimiento.getPosFinal().getFila() && j <= movimiento.getPosFinal().getColumna() && hay == false; i++, j++) {
+            for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() + 1; i < movimiento.getPosFinal().getFila() && j < movimiento.getPosFinal().getColumna() && hay == false; i++, j++) {
                 if (hayPieza(i, j) == true) {
                     hay = true;
                 }
             }
         } else if (movimiento.numVertical() > 0 && movimiento.numHorizontal() < 0) { //Diagonal abajo izquierda: Filas aumentan(i), columnas bajan(j)
-            for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() - 1; i <= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i++, j--) {
+            for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() - 1; i < movimiento.getPosFinal().getFila() && j > movimiento.getPosFinal().getColumna() && hay == false; i++, j--) {
                 if (hayPieza(i, j) == true) {
                     hay = true;
                 }
@@ -235,35 +240,20 @@ public class Tablero {
         return hay;
     }
 
-//    public boolean hayPiezasDiagonal(Movimiento movimiento) {
-//        boolean hay = false;
-//        if (movimiento.numVertical() < 0 && movimiento.numHorizontal() > 0) { //Diagonal hacia ariba derecha: Filas bajan, columnas suben
-//                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() + 1; i > movimiento.getPosFinal().getFila() && j < movimiento.getPosFinal().getColumna() && hay == false; i--, j++) {
-//                    if (hayPieza(i, j) == true) {
-//                        hay = true;
-//                    }
-//                }
-//            } else if (movimiento.numVertical() < 0 && movimiento.numHorizontal() < 0) { //Diagonal arriba izquierda: Filas bajan, columnas bajan.
-//                for (int i = movimiento.getPosInicial().getFila() - 1, j = movimiento.getPosInicial().getColumna() - 1; i >= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i--, j--) {
-//                    if (hayPieza(i, j) == true) {
-//                        hay = true;
-//                    }
-//                }
-//
-//            } else if (movimiento.numVertical() > 0 && movimiento.numHorizontal() > 0) {  //Diagonal abajo derecha: Filas aumentan, columnas aumentan
-//                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() + 1; i <= movimiento.getPosFinal().getFila() && j <= movimiento.getPosFinal().getColumna() && hay == false; i++, j++) {
-//                    if (hayPieza(i, j) == true) {
-//                        hay = true;
-//                    }
-//                }
-//            } else if(movimiento.numVertical() > 0 && movimiento.numHorizontal() < 0) { //Diagonal abajo izquierda: Filas aumentan(i), columnas bajan(j)
-//                for (int i = movimiento.getPosInicial().getFila() + 1, j = movimiento.getPosInicial().getColumna() - 1; i <= movimiento.getPosFinal().getFila() && j >= movimiento.getPosFinal().getColumna() && hay == false; i++, j--) {
-//                    if (hayPieza(i, j) == true) {
-//                        hay = true;
-//                    }
-//                }
-//
-//            }
-//        return hay;    
+//    public boolean comerPeon(Movimiento movimiento) {
+//        boolean puedeComer=false;
+//        if (buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).getColor().charAt(0) == 'b'
+//                && (hayPieza(movimiento.getPosInicial().getFila() + 1, movimiento.getPosInicial().getColumna() + 1)
+//                || hayPieza(movimiento.getPosInicial().getFila() + 1, movimiento.getPosInicial().getColumna() - 1)))
+//        {
+//            puedeComer=true;
+//        }else if (hayPieza(movimiento.getPosInicial().getFila()-1,movimiento.getPosInicial().getColumna()-1)
+//                || hayPieza(movimiento.getPosInicial().getFila()-1,movimiento.getPosInicial().getColumna()+1) ){
+//            puedeComer=true;
+//        }else{
+//            System.out.println("No puede comer en diagonal.");
+//        }
+//        
+//        return puedeComer;
 //    }
 }
