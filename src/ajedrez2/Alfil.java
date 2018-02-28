@@ -9,7 +9,7 @@ package ajedrez2;
  *
  * @author dam1
  */
-public class Alfil extends Piezas {
+public class Alfil extends Pieza {
 
 /**
  * Constructor por defecto para Alfil. Inicializa su nombre a Alfil, color a blanca y puntos a 4.
@@ -36,7 +36,7 @@ public class Alfil extends Piezas {
  * @return boolean True si el movimiento es correcto. False si no puede moverse de ese modo.
  */
     @Override
-    public boolean puedeMoverse(Movimiento movimiento) {
+    public boolean puedeMoverse(Movimiento movimiento, Tablero tab) {
         boolean movi = false;
         if(movimiento.esDiagonal() == true)
             movi = true;

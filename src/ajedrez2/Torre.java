@@ -9,7 +9,7 @@ package ajedrez2;
  *
  * @author dam1
  */
-public class Torre extends Piezas {
+public class Torre extends Pieza {
  /**
  * Constructor por defecto para Torre. Inicializa su nombre a Torre, color a blanca y puntos a 5.
  */
@@ -34,7 +34,7 @@ public class Torre extends Piezas {
  * @return boolean True si el movimiento es correcto. False si no puede moverse de ese modo.
  */
     @Override
-    public boolean puedeMoverse(Movimiento movimiento) {
+    public boolean puedeMoverse(Movimiento movimiento, Tablero tab) {
         boolean mov = false;
         if (movimiento.esHorizontal() == true || movimiento.esVertical() == true) {
             mov = true;

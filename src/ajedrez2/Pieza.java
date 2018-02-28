@@ -4,7 +4,7 @@ package ajedrez2;
  *
  * @author dam1
  */
-public abstract class  Piezas {
+public abstract class  Pieza {
     protected String color;
     protected String nombre;
     protected int puntos;
@@ -13,7 +13,7 @@ public abstract class  Piezas {
 /**
  * Constructor por defecto para una pieza cualquiera. 
  */
-    public Piezas() {
+    public Pieza() {
         color = "blanca";
         nombre = "test";
     }
@@ -22,7 +22,7 @@ public abstract class  Piezas {
      * Constructor para generar una pieza cualquiera.
      * @param color - Para ideantificar si la pieza es blanca o negra
      */
-    public Piezas(String color) {
+    public Pieza(String color) {
         this.color = color;
     }
     
@@ -71,7 +71,7 @@ public abstract class  Piezas {
      * que movamos. El método es implementado por cada pieza individualmente.
      * @return true = si se puede mover, false = si tiene otras piezas bloqueando su movimiento.
      */
-    public abstract boolean puedeMoverse(Movimiento movimiento);
+    public abstract boolean puedeMoverse(Movimiento movimiento, Tablero tab);
     
     /**
      * Pintar pieza: Cada pieza devolverá un símbolo unicode que representa a su subclase.

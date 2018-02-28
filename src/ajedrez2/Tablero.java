@@ -7,7 +7,7 @@ package ajedrez2;
 
 public class Tablero {
 
-    public Piezas[][] casillas = new Piezas[8][8];
+    public Pieza[][] casillas = new Pieza[8][8];
 
     /**
      * Constructor de un tablero. Inicializa todas las posiciones del array con
@@ -83,7 +83,7 @@ public class Tablero {
      * @param fila Fila en la que colocamos la pieza en el array.
      * @param columna Columna en la que colocamos la pieza en el array.
      */
-    public void ponerPieza(Piezas pieza, int fila, int columna) {
+    public void ponerPieza(Pieza pieza, int fila, int columna) {
         casillas[fila][columna] = pieza;
     }
 
@@ -94,7 +94,7 @@ public class Tablero {
      * @param pieza Pieza que deseamos posicionar en la casilla del tablero.
      * @param posicion Posición en la que queremos poner la pieza.
      */
-    public void ponerPieza(Piezas pieza, Posicion posicion) {
+    public void ponerPieza(Pieza pieza, Posicion posicion) {
         casillas[posicion.getFila()][posicion.getColumna()] = pieza;
     }
 
@@ -130,7 +130,7 @@ public class Tablero {
      * nosotros.
      * @return Pieza encontrada en esa posición.
      */
-    public Piezas buscarPieza(int fila, int columna) {
+    public Pieza buscarPieza(int fila, int columna) {
         return casillas[fila][columna];
     }
 
@@ -141,7 +141,7 @@ public class Tablero {
      * @param posicion - posición en el tablero donde quiero ver si hay pieza.
      * @return
      */
-    public Piezas buscarPieza(Posicion posicion) {
+    public Pieza buscarPieza(Posicion posicion) {
         return casillas[posicion.getFila()][posicion.getColumna()];
     }
 
@@ -159,9 +159,9 @@ public class Tablero {
     public boolean hacerMovimiento(Movimiento movimiento) {
 
         boolean realizado;
-        if ((buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento)) == true
+        if ((buscarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna()).puedeMoverse(movimiento,this)) == true
                 && hayPiezasEntre(movimiento) == false) {
-            Piezas aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
+            Pieza aux = casillas[movimiento.getPosInicial().getFila()][movimiento.getPosInicial().getColumna()];
             quitarPieza(movimiento.getPosInicial().getFila(), movimiento.getPosInicial().getColumna());
             ponerPieza(aux, movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna());
             realizado = true;
