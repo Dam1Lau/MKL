@@ -9,6 +9,7 @@ public class Peon extends Piezas {
      * siguiente modo: Nombre: Peon Color: Blanco Puntos: 1
      */
     public Peon() {
+
         nombre = "Peon";
         color = "blanco";
         puntos = 1;
