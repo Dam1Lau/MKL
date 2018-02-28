@@ -78,58 +78,6 @@ public class Peon extends Pieza {
         if (movimiento.esVertical() && tablero.hayPieza(movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna())) {
             movi = false;
         }
-//        if (color.charAt(0) == 'b') {
-//            if (movimiento.esDiagonal()
-//                    && tab.hayPieza(movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna())
-//                    && movimiento.numHorizontal() == 1 && movimiento.numVertical() == 1) {
-//                movi = true;
-//            } else if (movimiento.numVertical() == 1) {
-//                movi = true;
-//            } else if (movimiento.getPosInicial().getFila() == 1 && movimiento.numVertical() <= 2 && movimiento.numVertical() > 0) {
-//                movi = true;
-//            } else {
-//                System.out.println("Peon no puede retroceder.");
-//            }
-//
-//        } else {
-//            if (movimiento.esDiagonal()
-//                    && tab.hayPieza(movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna())
-//                    && movimiento.numHorizontal() == -1 && movimiento.numVertical() == -1) {
-//                movi = true;
-//
-//            } else if (movimiento.numVertical() == -1) {
-//                movi = true;
-//            } else if (movimiento.getPosInicial().getFila() == 6 && movimiento.numVertical() >= -2 && movimiento.numVertical() < 0) {
-//                movi = true;
-//            } else {
-//                movi = false;
-//                System.out.println("Peon no puede retroceder.");
-//            }
-//            if (movimiento.esDiagonal()
-//                    && tab.hayPieza(movimiento.getPosFinal().getFila(), movimiento.getPosFinal().getColumna())
-//                    && movimiento.numHorizontal() == 1 && movimiento.numVertical() == 1) {
-//                movi = true;
-//            } else {
-//                if (color.charAt(0) == 'b' && movimiento.esVertical() == true) {
-//                    if (movimiento.numVertical() == 1) {
-//                        movi = true;
-//                    } else if (movimiento.getPosInicial().getFila() == 1 && movimiento.numVertical() <= 2 && movimiento.numVertical() > 0) {
-//                        movi = true;
-//                    } else {
-//                        System.out.println("Peon no puede retroceder.");
-//                    }
-//                } else if (color.charAt(0) == 'n' && movimiento.esVertical() == true) {
-//                    if (movimiento.numVertical() == -1) {
-//                        movi = true;
-//                    } else if (movimiento.getPosInicial().getFila() == 6 && movimiento.numVertical() >= -2 && movimiento.numVertical() < 0) {
-//                        movi = true;
-//                    } else {
-//                        movi = false;
-//                        System.out.println("Peon no puede retroceder.");
-//                    }
-//                }
-//
-//           }
 
         return movi;
     }
