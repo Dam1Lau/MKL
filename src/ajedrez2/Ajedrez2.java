@@ -8,7 +8,7 @@ package ajedrez2;
 
 /**
  *
- * @author dam1
+ * @author Laura Pelaez 
  */
 public class Ajedrez2 {
 
@@ -23,8 +23,3 @@ public class Ajedrez2 {
     }
 
 }
-
-/*NOTAS A HACER:
-- Peones: Movimiento comer en diagonal
-- Peones negros vuelven hacia atras 1 casilla WHYYY
-*/

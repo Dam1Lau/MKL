@@ -50,7 +50,7 @@ public class Movimiento {
     /**
      * Set posicion inicial: Para cambiar el cotenido de la posición inicial.
      *
-     * @param posInicial
+     * @param posInicial - Posición Inicial.
      */
     public void setPosInicial(Posicion posInicial) {
         this.posInicial = posInicial;
@@ -69,7 +69,7 @@ public class Movimiento {
     /**
      * Set posicion final. Para cambiar el contenido de la posición final.
      *
-     * @param posFinal
+     * @param posFinal - Posición Final.
      */
     public void setPosFinal(Posicion posFinal) {
         this.posFinal = posFinal;
@@ -110,8 +110,8 @@ public class Movimiento {
     /**
      * Comprobación de que el movimiento introducido es diagonal o no. Para ello
      * restas las coordenadas (fila, columna) de la posicion final con las
-     * coordenadas de la posicion inicial en valor absoluto (Math.abs) para que
-     * si retrocedemos de fila o columna podamos hacer la comparación.
+     * coordenadas de la posicion inicial en valor absoluto (Math.abs) para que,
+     * si retrocedemos de fila o columna, podamos hacer la comparación.
      *
      * @return = true si el movimiento que comprueba el método es diagonal.
      */
@@ -124,8 +124,8 @@ public class Movimiento {
     }
 
     /**
-     * Numero Horizontal hace el cálculo de cuantas casillas se ha movido la
-     * pieza, horizontalmente, para ayudarnos en cada pieza a comprobar si el
+     * Numero Horizontal: hace el cálculo de cuantas casillas se ha movido la
+     * pieza horizontalmente para ayudarnos a comprobar si el
      * movimiento es válido o no.
      *
      * @return int - número de casillas en horizontal que se desplaza la pieza
@@ -137,8 +137,8 @@ public class Movimiento {
     }
 
     /**
-     * Numero Vertical hace el hace el cálculo de cuantas casillas se ha movido
-     * la pieza, verticalmente, para ayudarnos en cada pieza a comprobar si el
+     * Numero Vertical: hace el hace el cálculo de cuantas casillas se ha movido
+     * la pieza verticalmente, para ayudarnos a comprobar si el
      * movimiento es válido o no.
      *
      * @return int - número de casillas en vertical que se desplaza la pieza en
@@ -152,7 +152,7 @@ public class Movimiento {
     /**
      * To String - Devuelve los valores de los atributos de la clase Movimiento.
      *
-     * @return
+     * @return String con el valor de posInicial y de posFinal.
      */
     @Override
     public String toString() {

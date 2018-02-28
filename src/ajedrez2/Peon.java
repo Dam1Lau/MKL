@@ -5,7 +5,10 @@ public class Peon extends Pieza {
     //constructores
     /**
      * Constructor por defecto para un Peón. Los atributos se inicializan del
-     * siguiente modo: Nombre: Peon Color: Blanco Puntos: 1
+     * siguiente modo: 
+     * Nombre: Peon 
+     * Color: Blanco 
+     * Puntos: 1
      */
     public Peon() {
 
@@ -15,7 +18,7 @@ public class Peon extends Pieza {
     }
 
     /**
-     * Constructor para crear una nueva Pieza de tipo Peon. El atributo que
+     * Constructor para crear una nueva Pieza de tipo Peón. El atributo que
      * podemos especificar es el color, que se instroduce como primer parámetro.
      * El resto de atributos del Peón son la puntuación y el nombre, que ya
      * están inicializados con un valor.
@@ -30,12 +33,10 @@ public class Peon extends Pieza {
     }
 
     /**
-     * En el caso del peón el movimiento es válido en estas situaciones: Si son
-     * blancos: Cuando el movimiento vertical es +1 (+2 si nunca se ha movido) y
-     * no hay piezas contrarias en sus diagonal. Si son negros: Cuando el
-     * movimiento vertical es -1 (-2 si nucna se ha movido anteriormente) y si
-     * no hay piezas contrarias en sus diagonales. En ambos casos si hay pieza
-     * contraria en sus diagonales, tambien pueden moverse en diagonal.
+     * En el caso del peón el movimiento es válido en estas situaciones: 
+     * Cuando el movimiento vertical es 1 (2 si nunca se ha movido) y
+     * no hay pieza de ningun tipo en vertical. 
+     * Si hay pieza contraria en sus diagonales, tambien pueden moverse en diagonal.
      *
      * @param movimiento - movimiento introducido por el usuario tras
      * comprobarlo.

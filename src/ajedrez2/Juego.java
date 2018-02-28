@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Juego {
 
     /**
-     * Turno tomará dos valores: 0 si es el turno de las piezas blancas 1 si lo
-     * es el de las piezas negras
+     * Turno ira aumentando de valor conforme la partida avanza. En general se usará número par para turno
+     * de blancas, y número impar para turno de negras.
      */
     private int turno;
 
     /**
-     * CONSTRUCTOR DEL JUEGO El juego siempre comienza en el turno de las piezas
+     * CONSTRUCTOR DEL JUEGO: El juego siempre comienza en el turno de las piezas
      * blancas.
      */
     public Juego() {
@@ -30,7 +30,7 @@ public class Juego {
     /**
      * Set turno: Nos permite cambiar el turno en el que nos encontramos.
      *
-     * @param turno - número entero para cambiar el turno anterior por el nuevo
+     * @param turno - Número entero para cambiar el turno anterior por el nuevo
      * introducido.
      */
     public void setTurno(int turno) {
@@ -40,7 +40,7 @@ public class Juego {
     /**
      * Comenzar juego: Encargado de realizar las acciones necesarias para poder
      * jugar. Indica el turno, pinta el tablero si el movimiento se realiza, y
-     * al finalizar el juego muestra puntuación final.
+     * al finalizar el juego tras 50 movimientos muestra puntuación final.
      *
      * @param tablero - tablero en el que estamos jugando.
      */
@@ -100,7 +100,7 @@ public class Juego {
      * que el movimiento es correcto antes de devolver el movimiento en el
      * ultimo paso.
      *
-     * @param tablero
+     * @param tablero - tablero en el que estamos jugando. Necesario para acceder a las casillas y hacer comprobaciones.
      * @return movimiento válido tras las comprobaciones
      */
     public Movimiento meterJugada(Tablero tablero) {
@@ -142,11 +142,11 @@ public class Juego {
 
     /**
      * Cuando el juego ha finalizado, se llama a este método que se encargará de
-     * recorrer el tablero y al ir encontrando piezas, observa cuál es su color
+     * recorrer el tablero y, al ir encontrando piezas, observa cuál es su color
      * y añade la puntuación de cada pieza al contador de cada color. Finalmente
      * imprime el resultado en puntos.
      *
-     * @param tablero
+     * @param tablero - tablero en el que jugamos.
      */
     public void recuentoFinal(Tablero tablero) {
         int blancas = 0, negras = 0;

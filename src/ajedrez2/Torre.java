@@ -43,7 +43,7 @@ public class Torre extends Pieza {
     }
 
     /**
-     * Dibuja la pieza usando el cñodigo unicode asignado a cada pieza de
+     * Dibuja la pieza usando el código unicode asignado a cada pieza de
      * ajedrez segun su color.
      *
      * @return Símbolo unicode de la pieza.
